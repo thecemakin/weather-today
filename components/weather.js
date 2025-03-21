@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   Button,
   TextInput,
-  ImageBackground,
+  ImageBackground
 } from "react-native";
 import {} from "react-native";
 import * as Location from "expo-location";
@@ -104,6 +104,13 @@ function WeatherScreen() {
   }
 
   return (
+    <ImageBackground
+            source={{
+              uri: "https://i.pinimg.com/736x/25/cc/30/25cc30ebaf8c545f61db977c50765ac4.jpg",
+            }}
+            resizeMode="cover"
+            style={styles.container}
+          >
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
@@ -129,13 +136,13 @@ function WeatherScreen() {
       )}
         
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
