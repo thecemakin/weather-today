@@ -72,12 +72,12 @@ function SelectedLocation({ value }) {
           </Text>
           <Text style={styles.text}>
             Temp MIN-MAX:{" "}
-            {Math.round(weather?.main.temp_max) -
-              Math.round(weather?.main.temp_min)}
+            {Math.round(weather?.main.temp_min) +"-"+
+              Math.round(weather?.main.temp_max)}
             °
           </Text>
           <Text style={styles.text}>
-            Desc.: {weather?.weather[0].description}
+            Desc: {weather?.weather[0].description}
           </Text>
         </View>
         {weather?.weather[0].main === "Rain" ? (
@@ -122,10 +122,10 @@ function SelectedLocation({ value }) {
         )}
       </View>
       <FlatList
-        contentContainerStyle={{ gap: 10, height: 200, width: 400 }}
+        contentContainerStyle={{ gap: 10}}
         showsHorizontalScrollIndicator={false}
         horizontal
-        style={{ marginTop: "auto" }}
+        style={{ marginTop: "auto", marginTop: "auto", height: 1 }}
         data={forecast}
         renderItem={({ item }) => <ForecastItem forecast={item} />}
       />

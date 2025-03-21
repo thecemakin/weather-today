@@ -8,13 +8,15 @@ import {
   ActivityIndicator,
   Button,
   TextInput,
-  ImageBackground
+  ImageBackground,
+  SafeAreaView
 } from "react-native";
 import {} from "react-native";
 import * as Location from "expo-location";
 import ForecastItem from "./forecast";
 import CurrentLocationWeather from "./current";
 import SelectedLocation from "./selected-location";
+import { Dimensions } from "react-native";
 
 const API_KEY = process.env.EXPO_PUBLIC_OPEN_WEATHER_KEY;
 const FORECAST_API_KEY = process.env.EXPO_PUBLIC_OPEN_FORECAST_KEY;
@@ -31,6 +33,8 @@ function WeatherScreen() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [value, setValue] = useState("");
   const [inputValue, setinputValue] = useState("")
+  const width = Dimensions.get("window").width
+  const height = Dimensions.get("window").height
 
   const getWeatherToday = async () => {
     try {
@@ -104,6 +108,7 @@ function WeatherScreen() {
   }
 
   return (
+    <SafeAreaView style={{width: width,height: height}}>
     <ImageBackground
             source={{
               uri: "https://i.pinimg.com/736x/25/cc/30/25cc30ebaf8c545f61db977c50765ac4.jpg",
@@ -137,6 +142,7 @@ function WeatherScreen() {
         
     </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }
 

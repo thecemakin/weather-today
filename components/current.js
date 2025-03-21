@@ -3,10 +3,9 @@ import { View, Text, ImageBackground, StyleSheet } from "react-native";
 import { FlatList } from "react-native";
 import ForecastItem from "./forecast";
 import Feather from "@expo/vector-icons/Feather";
-
 function CurrentLocationWeather({ weather, forecast, location }) {
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1, width: '%100', justifyContent: "center", alignItems: "center"}}>
       
         <View
           style={{
@@ -27,10 +26,10 @@ function CurrentLocationWeather({ weather, forecast, location }) {
               Feels like: {Math.round(weather?.main.feels_like)}°
             </Text>
             <Text style={styles.text}>
-              Temp MIN-MAX: {Math.round(weather?.main.temp_max) - Math.round(weather?.main.temp_min)}°
+              Temp MIN-MAX: {Math.round(weather?.main.temp_min) +"-"+ Math.round(weather?.main.temp_max)}°
             </Text>
             <Text style={styles.text}>
-            Desc.: {weather.weather[0].description}
+            Desc: {weather.weather[0].description}
             </Text>
           </View>
           {weather.weather[0].main === "Rain" ? (
@@ -75,10 +74,10 @@ function CurrentLocationWeather({ weather, forecast, location }) {
           )}
         </View>
         <FlatList
-          contentContainerStyle={{ gap: 10, height: 200, width: 400 }}
+          contentContainerStyle={{ gap: 10 }}
           showsHorizontalScrollIndicator={false}
           horizontal
-          style={{ marginTop: "auto" }}
+          style={{ marginTop: "auto", height: 1 }}
           data={forecast}
           renderItem={({ item }) => <ForecastItem forecast={item} />}
         />
@@ -87,7 +86,6 @@ function CurrentLocationWeather({ weather, forecast, location }) {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
